@@ -1,0 +1,25 @@
+
+method of local storage 
+
+1. setItem()
+
+localStorage.setItem("key","value")
+
+2.getItem()
+
+localStorage.getItem("keyname")
+var mobile_no=localStorage.getItem("mobile");
+console.log(mobile_no)
+
+3.removeitem()
+
+localStorage.removeItem("keyname")
+
+4. clear() 
+
+localStorage.clear();
+
+
+
+//JSON (JavaScript Object Notation) 2.html
+.usinvesal data storage fromate

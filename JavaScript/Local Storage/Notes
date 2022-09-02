@@ -1,6 +1,0 @@
-
-method of local storage 
-
-1. setItem()
-
-localStorage.setItem("key","value")
