@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var arr=[1,2,3,4];
+    // localStorage.setItem("arr",arr);
+    // var s=localStorage.getItem("arr");
+    // console.log(typeof s)
+ // console. is string not array
+
+//JSON (JavaScript Object Notation) 
+localStorage.setItem("storearr",JSON.stringify(arr));
+var get=localStorage.getItem("store")
+var obj={name:"sachin",roll:101,company:"google"};
+
+localStorage.setItem("storeobj",JSON.stringify(obj));
+
+
+var getarr=JSON.parse(localStorage.getItem("storearr"));
+console.log(arr[1]);
+var getobj=JSON.parse(localStorage.getItem("storeobj"));
+console.log(getobj)
+
+</script>

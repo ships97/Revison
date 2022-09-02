@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1></h1>
+    <button id="inc">increment</button>
+    <button id="dec">decrement</button>
+  </body>
+</html>
+
+<script>
+  document.querySelector("#inc").addEventListener("click", increment);
+//   var counter;
+// //  console.log(counter)
+//   if (counter === null || counter=== undefined) {
+//     counter = 0;
+//     // console.log("hello")
+//   } else {
+//     counter = localStorage.getItem("counterdata");
+//   }
+
+var counter=localStorage.getItem("counterdata") || 0;
+
+  document.querySelector("h1").innerText = counter;
+
+  function increment() {
+    // console.log("increment")
+    counter++;
+    localStorage.setItem("counterdata", counter);
+    document.querySelector("h1").innerText = counter;
+  }
+
+  document.querySelector("#dec").addEventListener("click", decrement);
+  function decrement() {
+    //    console.log("decrement")
+    counter--;
+    localStorage.setItem("counterdata", counter);
+
+    document.querySelector("h1").innerText = counter;
+  }
+</script>
