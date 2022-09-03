@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>login</h1>
+    <form id="form">
+      <input type="text" placeholder="Enter the user name" id="user" />
+      <input type="text" placeholder="Enter the Password" id="pass" />
+      <input type="submit" value="login" />
+    </form>
+  </body>
+</html>
+
+<script>
+  var registerUser = JSON.parse(localStorage.getItem("SignupDetalis"));
+  console.log(registerUser);
+
+  document.querySelector("#form").addEventListener("submit", formSubmit);
+  var form = document.querySelector("#form");
+  // console.log(form.user.value);
+
+  function formSubmit() {
+    event.preventDefault();
+    // var loginObj = {
+    //   user: form.user.value,
+    //   pass: form.pass.value,
+    // };
+    // console.log(loginObj);
+
+    var user = form.user.value;
+    var pass = form.pass.value;
+  let flag=false
+    for(var i=0; i<registerUser.length; i++)
+    { 
+        if(registerUser[i].user == user && registerUser[i].password == pass)
+        {
+           flag=true
+        }else{
+           
+        }
+       
+    }
+    
+  if(flag)
+  {
+    console.log("login Done")
+  }
+  else{
+    console.log("login failed")
+  }
+  }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" placeholder="Enter the user name" id="user" />
+      <input type="email" placeholder="Enter the email" id="email" />
+      <input type="text" placeholder="Enter the Password" id="pass" />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
+<script>
+  document.querySelector("#form").addEventListener("submit", myformsubmit);
+  var signuparr = JSON.parse(localStorage.getItem("SignupDetalis")) || [];
+  function myformsubmit() {
+    event.preventDefault();
+    var singupObj = {
+      user: document.querySelector("#user").value,
+      email: document.querySelector("#email").value,
+      password: document.querySelector("#pass").value,
+    };
+
+    signuparr.push(singupObj);
+    console.log(signuparr);
+    localStorage.setItem("SignupDetalis", JSON.stringify(signuparr));
+    alert("Signup Done")
+    window.location.href = "login.html";
+    // document
+    //   .querySelector("input[type='submit']").addEventListener("click", function () {
+    //     window.location.href = "login.html";
+    //   });
+  }
+</script>
