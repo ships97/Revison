@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Add Product Data</h1>
+    <div>                                                                                                                                                                                                                                           
+      <a href="Index.html">Home</a>
+      <a href="product.html">PRODUCTS</a>
+  <a href="addtocart.html">add to cart</a>
+
+    </div>
+
+    <div id="container">
+      <form id="form">
+        <input type="text" placeholder="Enter the Task " id="pname" />
+        <input type="number" placeholder="Enter the amount " id="pamount" />
+        <input type="text" placeholder="Enter the image url " id="url" />
+        <input type="submit" id="submit" />
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  document.querySelector("#form").addEventListener("submit", test);
+  var localdata = JSON.parse(localStorage.getItem("productdata")) || [];
+  function test() {
+    event.preventDefault();
+
+    var name = document.querySelector("#pname").value;
+    var amount = document.querySelector("#pamount").value;
+    var imgurl = document.querySelector("#url").value;
+
+    var data = {
+      Pname: name,
+      Pamount: amount,
+      Img: imgurl,
+    };
+
+    localdata.push(data);
+
+    localStorage.setItem("productdata", JSON.stringify(localdata));
+
+    console.log("test", data);
+  }
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .hello{
+   display: flex;
+   border: 1px solid black;
+   justify-content: space-around;
+
+        }
+        .hello>img{
+            width: 20%;
+        }
+    </style>
+  </head>
+  <body>
+    <div>
+        <a href="Index.html">Home</a>
+        <a href="product.html">PRODUCTS</a>
+        <a href="addtocart.html">add to cart</a>
+      </div>
+    <h1 style="text-align: center">Prdouct Page</h1>
+    <div id="container"></div>
+  </body>
+</html>
+
+<script>
+  var data = JSON.parse(localStorage.getItem("productdata"));
+
+  data.map(function (elem, index) {
+    var ap = document.createElement("div");
+    ap.setAttribute("class","hello")
+
+    var img = document.createElement("img");
+    img.src = elem.Img;
+    console.log(elem.Img);
+    var Product = document.createElement("h3");
+    Product.innerText = elem.Pname;
+    var Amount = document.createElement("p");
+    Amount.innerText = elem.Pamount;
+      
+    var addtocart
+    ap.append(Product, Amount, img);
+    document.querySelector("#container").append(ap);
+  });
+
+  console.log(data);
+</script>
