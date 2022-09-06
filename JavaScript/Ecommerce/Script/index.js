@@ -111,6 +111,7 @@ shoes.map(function(elem,inde)
   var div=document.createElement("div");
 
   var img=document.createElement("img")
+  var img=document.createElement("img")
   
   console.log(elem)
 })
