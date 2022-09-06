@@ -28,7 +28,8 @@ var counter=localStorage.getItem("counterdata") ||0;
 
   document.querySelector("h1").innerText = counter;
 
-  function increment() {
+  function increment() 
+  {
     // console.log("increment")
     counter++;
     localStorage.setItem("counterdata", counter);
