@@ -1,0 +1,147 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+#container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 98%;
+  margin: auto;
+  /* border: 1px solid black; */
+  gap: 10px;
+  background-color: rgb(233, 233, 233);
+}
+
+#container > div {
+  /* border: 1px solid red; */
+  text-align: center;
+  box-shadow: rgba(43, 43, 43, 0.2) 0px 2px 8px 0px;
+}
+#container > div > img {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+
+
+.navbar > div {
+  
+  display: flex;
+  /* position: fixed; */
+  width: 100%;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+  height: 50px;
+  background-color: greenyellow;
+  color: white;
+  margin-bottom: 30px;
+
+  /* margin: auto; */
+  padding-top: 20px;
+}
+.navbar > div > a {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.footer {
+  height: 30px;
+  margin-top: 20px;
+  border-top: 1px solid black;
+  text-align: center;
+  padding: 20px;
+}
+
+input {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid rgb(105, 172, 6);
+}
+
+.serachbutton {
+  border: 1px solid yellowgreen;
+  background-color: transparent;
+  width: 80px;
+  height: 30px;
+  font-weight: bolder;
+  /* medium */
+}
+@media all and (min-width: 381px) and (max-width: 700px) {
+  .footer {
+    background-color: red;
+  }
+
+  #container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 98%;
+    margin: auto;
+    /* border: 1px solid black; */
+    gap: 10px;
+    background-color: rgb(233, 233, 233);
+  }
+  .navbar > div > a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .navbar > div {
+    display: flex;
+    /* position: fixed; */
+    width: 100%;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    height: 40px;
+    background-color: greenyellow;
+    color: white;
+    margin-bottom: 30px;
+
+    /* margin: auto; */
+    padding-top: 20px;
+  }
+  .navbar {
+    width: 100%;
+  }
+}
+
+/* small */
+@media all and (min-width: 50px) and (max-width: 380px) {
+  .footer {
+    background-color: yellow;
+  }
+  #container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 98%;
+    margin: auto;
+    /* border: 1px solid black; */
+    gap: 5px;
+    background-color: rgb(233, 233, 233);
+  }
+  .navbar {
+    width: 100%;
+  }
+  .navbar > div > a {
+    text-decoration: none;
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .navbar > div {
+    display: flex;
+    /* position: fixed; */
+    /* width: 100%; */
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    height: 20px;
+    background-color: greenyellow;
+    color: white;
+    margin-bottom: 30px;
+
+    /* margin: auto; */
+    padding-top: 10px;
+  }
+}

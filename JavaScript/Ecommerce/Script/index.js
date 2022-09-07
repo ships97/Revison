@@ -5,6 +5,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/3281608/pexels-photo-3281608.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 4,
+    price: 999,
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/9993286/pexels-photo-9993286.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 799,
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/8378567/pexels-photo-8378567.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 4,
+    price: 545,
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/5710085/pexels-photo-5710085.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 9654,
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/1456733/pexels-photo-1456733.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 958,
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/1456706/pexels-photo-1456706.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 455,
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 6556,
   },
   {
     id: 8,
@@ -54,6 +61,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/4495409/pexels-photo-4495409.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 544,
   },
   {
     id: 9,
@@ -61,6 +69,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/6540927/pexels-photo-6540927.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 549,
   },
   {
     id: 10,
@@ -68,6 +77,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/9645566/pexels-photo-9645566.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 799,
   },
   {
     id: 11,
@@ -75,6 +85,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 322,
   },
   {
     id: 12,
@@ -82,6 +93,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/6777980/pexels-photo-6777980.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 654,
   },
   {
     id: 13,
@@ -89,6 +101,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/6747235/pexels-photo-6747235.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 258,
   },
   {
     id: 14,
@@ -96,6 +109,7 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/3261069/pexels-photo-3261069.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 0,
+    price: 658,
   },
   {
     id: 15,
@@ -103,17 +117,41 @@ var shoes = [
     image:
       "https://images.pexels.com/photos/4252948/pexels-photo-4252948.jpeg?auto=compress&cs=tinysrgb&w=800",
     cart_quantity: 2,
+    price: 1001,
   },
 ];
 
-shoes.map(function(elem,inde)
+localStorage.setItem("shoesdata", JSON.stringify(shoes));
+var data = JSON.parse(localStorage.getItem("shoesdata"));
+
+var cartdata=JSON.parse(localStorage.getItem("cartdata")) || [];
+
+
+data.map(function (elem, inde) {
+  var div = document.createElement("div");
+
+  var img = document.createElement("img");
+  img.src = elem.image;
+  var txt = document.createElement("p");
+  txt.innerText = elem.name;
+  var price = document.createElement("p");
+  price.innerText = "Rs  " + elem.price;
+  var btn = document.createElement("button");
+  btn.innerText = "Add To Cart";
+  btn.addEventListener("click",function(){
+    addtocart(elem)
+  })
+  div.append(img, txt, price, btn);
+
+  document.querySelector("#container").append(div);
+});
+
+
+function addtocart(elem)
 {
-  var div=document.createElement("div");
 
-  var img=document.createElement("img")
-  var img=document.createElement("img")
+    var p=elem;
+    cartdata.push(p)
   
-  console.log(elem)
-})
-
-console.log(shoes)
+  localStorage.setItem("cartdata",JSON.stringify(cartdata)) 
+}
