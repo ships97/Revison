@@ -26,12 +26,16 @@
     <div style="text-align: center" class="mainpart">
       <p>Produrs item</p>
 
-      
-      <select name="" id="">
-        <option value="">Sort low to high</option>
-        <option value="">Sort high to low</option>
-        <option value="">> 500</option>
+      <!-- ///sorting -->
+      <select name="" onchange="Sortitem()" id="sorter">
+        <option value="">Sort By</option>
+        <option value="LtoH">Sort low to high</option>
+        <option value="HtoL">Sort high to low</option>
+        <option value="500">> 500</option>
       </select>
+
+
+
       <input type="text" placeholder="Enter The shoes Name"  />
       <button class="serachbutton">Search</button>
       <br><br>
