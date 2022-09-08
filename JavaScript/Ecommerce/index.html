@@ -26,19 +26,33 @@
     <div style="text-align: center" class="mainpart">
       <p>Produrs item</p>
 
-      <!-- ///sorting -->
-      <select name="" onchange="Sortitem()" id="sorter">
-        <option value="">Sort By</option>
-        <option value="LtoH">Sort low to high</option>
-        <option value="HtoL">Sort high to low</option>
-        <option value="500">> 500</option>
-      </select>
+  
+
+      <!-- //Search part -->
+      <input type="text" onkeyup="serach()" placeholder="Enter The shoes Name" id="Searchitem" />
+      <!-- <button class="serachbutton">Search</button> -->
+      
+
+      <!-- ====== -->
 
 
+          <!-- ///sorting -->
+          <select name="" onchange="Sortitem()" id="sorter">
+            <option value="">Sort By</option>
+            <option value="LtoH">Sort low to high</option>
+            <option value="HtoL">Sort high to low</option>
+            <option value="500">> 500</option>
+          </select>
+          <br><br>
+<!-- // filter By price -->
 
-      <input type="text" placeholder="Enter The shoes Name"  />
-      <button class="serachbutton">Search</button>
-      <br><br>
+<!-- <select name="" onchange="Sortitem()" id="sorter">
+  <option value="">Filter By</option>
+  <option value="500"> 500</option>
+  <option value="800"> 800</option>
+  <option value="2000">under 2000</option>
+</select> -->
+
     </div>
     <div id="container"></div>
 

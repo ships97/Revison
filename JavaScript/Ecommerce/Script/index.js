@@ -161,16 +161,31 @@ function Sortitem() {
   console.log(short);
   //  console.log(data)
   if (short === "HtoL") {
-    var newdata = data.sort(function (a, b) {
+    data.sort(function (a, b) {
       return b.price - a.price;
     });
     document.getElementById("container").innerHTML = null;
-    appenddata(newdata);
+    appenddata(data);
   } else if (short === "LtoH") {
-    var newdata = data.sort(function (a, b) {
+    data.sort(function (a, b) {
       return a.price - b.price;
     });
     document.getElementById("container").innerHTML = null;
-    appenddata(newdata);
+    appenddata(data);
   }
+}
+
+function serach() {
+  let a = document.getElementById("Searchitem").value;
+  console.log(a);
+
+  var s=data.filter(function(item)
+  {
+    return item.name.includes(a);
+  })
+
+  // console.log(s)
+  document.getElementById("container").innerHTML = null;
+
+  appenddata(s)
 }
