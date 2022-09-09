@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+
+let passexam=false;
+
+let myprom=new Promise(function(resolev,rejected){
+    if(passexam)
+    {
+        resolev("bike")
+    }else{
+        rejected("bike nahi milega")
+    }
+})
+
+//Success 
+myprom.then(function(res){
+    console.log("response :",res)
+})
+//failure
+
+myprom.catch(function(error)
+{
+    console.log("errror :",error)
+})
+
+</script>
