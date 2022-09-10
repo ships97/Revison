@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div>
+        <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpAtnLBBg1pE6QDA_1c0ZGmbEDLDXnzqfVEQ&usqp=CAU" alt=""> -->
+        <a href="index.html">Home</a>
+        <a href="Produt.html">Product</a>
+        <!-- <input type="text" placeholder="enter the shoes name"> -->
+        <a href="Addtocart.html">Add to cart</a>
+        <a href="Addtocart.html">Login/Signup</a>
+      </div>
+    </div>
+    <div style="text-align: center" class="mainpart">
+      <p>Produrs item</p>
+
+      <!-- //Search part -->
+      <input
+        type="text"
+        onkeyup="serach()"
+        placeholder="Enter The shoes Name"
+        id="Searchitem"
+      />
+      <!-- <button class="serachbutton">Search</button> -->
+
+      <!-- ====== -->
+
+      <!-- ///sorting -->
+      <select name="" onchange="Sortitem()" id="sorter">
+        <option value="">Sort By</option>
+        <option value="LtoH">Sort low to high</option>
+        <option value="HtoL">Sort high to low</option>
+        <option value="500">> 500</option>
+      </select>
+      <select name="" onchange="Filteritem()" id="filter">
+        <option value="">Filter By category</option>
+        <option value="men's clothing">Mens</option>
+        <option value="electronics">Electronics</option>
+      </select>
+   
+      
+    </div>
+    <div id="container"></div>
+  </body>
+</html>
+<script>
+  //   let url = "https://fakestoreapi.com/products";
+
+  //   let myprom = fetch(url);
+
+  //   myprom
+  //     .then(function (res) {
+  //       // console.log(res)
+  //       return res.json();
+  //     })
+
+  //     .then(function (res) {
+  //       console.log("res", res);
+  //     });
+
+  let url = "https://fakestoreapi.com/products";
+
+  async function getdata() {
+    try {
+      let res = await fetch(url);
+      let data = await res.json();
+      console.log("data", data);
+
+      appendproducts(data);
+
+      localStorage.setItem("mdata", JSON.stringify(data));
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
+  getdata();
+
+  function appendproducts(data) {
+    data.forEach(function (elem) {
+      var div = document.createElement("div");
+
+      var img = document.createElement("img");
+      img.src = elem.image;
+      var txt = document.createElement("p");
+      txt.innerText = elem.title;
+      var price = document.createElement("p");
+      price.innerText = "Rs  " + elem.price;
+      var btn = document.createElement("button");
+      btn.innerText = "Add To Cart";
+      btn.addEventListener("click", function () {
+        addtocart(elem);
+      });
+      div.append(img, txt, price, btn);
+
+      document.querySelector("#container").append(div);
+    });
+  }
+
+
+//filter part Done
+
+  function Filteritem() {
+    let data = JSON.parse(localStorage.getItem("mdata"));
+
+    var filtervalue = document.getElementById("filter").value;
+    console.log(filtervalue);
+    var ts = data.filter(function (item) {
+      return item.category == filtervalue;
+    });
+    //   console.log(ts)
+    document.getElementById("container").innerHTML = null;
+
+    appendproducts(ts);
+  }
+
+  //serach part done
+
+  function serach() {
+    let database = JSON.parse(localStorage.getItem("mdata"));
+
+    let a = document.getElementById("Searchitem").value;
+
+    let filtered = database.filter((el) => {
+      return el.title.includes(a);
+    });
+    console.log("aaaaa", filtered);
+
+    document.getElementById("container").innerHTML = null;
+
+    appendproducts(filtered);
+  }
+
+  //sort
+</script>
