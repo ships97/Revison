@@ -45,7 +45,7 @@
         <option value="electronics">Electronics</option>
       </select>
    
-      
+      <br><br>
     </div>
     <div id="container"></div>
   </body>
@@ -139,4 +139,26 @@
   }
 
   //sort
+
+  function Sortitem() {
+
+  let data = JSON.parse(localStorage.getItem("mdata"));
+
+  var short = document.getElementById("sorter").value;
+  console.log(short);
+  //  console.log(data)
+  if (short === "HtoL") {
+    data.sort(function (a, b) {
+      return b.price - a.price;
+    });
+    document.getElementById("container").innerHTML = null;
+    appendproducts(data);
+  } else if (short === "LtoH") {
+    data.sort(function (a, b) {
+      return a.price - b.price;
+    });
+    document.getElementById("container").innerHTML = null;
+    appendproducts(data);
+  }
+}
 </script>
