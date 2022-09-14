@@ -1,0 +1,14 @@
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    background-color: tomato;
+    color: black;
+    /* padding: 40px; */
+  }
+  a{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top:20px;
+  }

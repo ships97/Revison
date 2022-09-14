@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/navbar.css" />
+  </head>
+  <body>
+    <div id="navbar">
+      <a href="./index.html">home</a>
+      <a href="./addproduct.html">addproducts</a>
+      <a href="./product.html">products</a>
+  
+    </div>
+
+    <form id="form" style="text-align: center">
+      <div>
+        <label for="">Product Name </label>
+        <input type="text" name="name" id="name" placeholder="Enter The " />
+      </div>
+
+      <div>
+        <label for=""> Img url  </label>
+        <input type="text" name="url" id="url" placeholder="Enter url" />
+      </div>
+
+      <div>
+        <label for=""> price </label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          placeholder="Enter username"/>
+
+        
+
+      
+     
+      <button id="submit_btn" type="submit">SUBMIT</button>
+    </form>
+  </body>
+</html>
+<script>
+     var url = "https://masai-api-mocker.herokuapp.com";
+
+ document.querySelector("#form").addEventListener("submit",getdtaa);
+
+function getdtaa(e) {
+  e.preventDefault();
+  let Name = document.getElementById("name").value;
+  let Imgurl = document.getElementById("url").value;
+  let Price = document.getElementById("price").value;
+ 
+  var formData = { Name, Imgurl, Price };
+  console.log(formData);
+
+  fetch(`http://localhost:3000/products`, {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((er) => console.log(er));
+
+}
+
+</script>
