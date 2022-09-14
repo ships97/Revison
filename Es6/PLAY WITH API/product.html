@@ -8,11 +8,64 @@
     <link rel="stylesheet" href="./styles/navbar.css" />
   </head>
   <body>
-    <div id="navbar">
-      <a href="./index.html">home</a>
+    <div class="navbar">
+     <div> <a href="./index.html">home</a>
       <a href="./addproduct.html">addproducts</a>
-      <a href="./product.html">products</a>
-  
+      <a href="./product.html">products</a></div>
     </div>
+    <div id="container"></div>
   </body>
 </html>
+<script>
+  let url = "https://skk-first-mock.herokuapp.com/products";
+
+    //  fetch(url)
+    // .then((res) => res.json())
+    // .then((data) => console.log(data));
+  
+async function getdata() {
+  try {
+    let res = await fetch(url);
+    let data = await res.json();
+
+    console.log("api", data);
+
+    appenddata(data);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+getdata()
+
+// Get data form api
+
+  function appenddata(data) {
+    console.log("map", data);
+    data.map(function (elem, inde) {
+      var div = document.createElement("div");
+
+      var img = document.createElement("img");
+      img.src = elem.image;
+      var txt = document.createElement("p");
+      txt.innerText = elem.title;
+      var price = document.createElement("p");
+      price.innerText = "Rs  " + elem.price;
+      var btn = document.createElement("button");
+      btn.innerText = "Add To Cart";
+      btn.addEventListener("click", function () {
+        addtocart(elem);
+      });
+      div.append(img, txt, price, btn);
+
+      document.querySelector("#container").append(div);
+    });
+  }
+
+
+  //sort functionallity through api 
+  
+
+
+
+
+</script>
