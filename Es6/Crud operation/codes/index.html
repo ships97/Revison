@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #main {
+        width: 90%;
+        border: 1px solid black;
+        margin: auto;
+        padding: 20px;
+      }
+      table {
+        margin-top: 80px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <form action="" id="form">
+        <select name="" id="country">
+          <option value="">select country</option>
+          <option value="india">india</option>
+          <option value="japan">japan</option>
+          <option value="usa">usa</option>
+          <option value="canada">canada</option>
+        </select>
+        <input type="text" placeholder="enter the city name" id="city" />
+        <input type="text" placeholder="enter the population" id="population" />
+        <input type="submit" id="submit_form" />
+      </form>
+
+      <!-- //filter section  -->
+
+      <div id="filterSection">
+        <select name="" id="country-filter"></select>
+      </div>
+
+      <!-- //sort by population -->
+      <div>
+        <select id="sort" onchange="sortpopulation()">
+          <option value="">Sort by</option>
+          <option value="asc">high to low</option>
+          <option value="desc">low to high</option>
+        </select>
+      </div>
+
+      <div id="table">
+        <table>
+          <thead>
+            <tr>
+              <td>id</td>
+              <td>country</td>
+              <td>city</td>
+              <td>population</td>
+              <td>Edit</td>
+              <td>Delete</td>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  var api = "https://skk-crud.herokuapp.com/data";
+  var golbaldata = [];
+  var form = document.getElementById("form");
+  form.addEventListener("submit", add_Data);
+
+  function add_Data(e) {
+    e.preventDefault();
+    var country = document.getElementById("country").value;
+    var city = document.getElementById("city").value;
+    var population = document.getElementById("population").value;
+
+    var obj = {
+      country,
+      city,
+      population,
+    };
+    console.log(obj);
+
+    fetch(api, {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: { "content-type": "application/json" },
+    }).then((res) => getdata());
+  }
+  getdata();
+  function getdata() {
+    let countries = {};
+    fetch(api)
+      .then((res) => res.json())
+      .then((data) => {
+        appenddata(data);
+        data.map((el) => {
+          countries[el.country] = 1;
+        });
+        let countryselect = document.getElementById("country-filter");
+        countryselect.innerHTML = ` <option value="all">all countries</option>`;
+
+        for (key in countries) {
+          countryselect.innerHTML += ` <option value="${key}">${key}</option>`;
+        }
+        countryselect.addEventListener("change", () => {
+          let selectcountry = countryselect.value;
+          // console.log(selectcountry)
+          if (selectcountry === "all") {
+            appenddata(data);
+            // console.log("done")
+          }else{
+
+            fetch(api + `?country=${selectcountry}`)
+            .then((res) => res.json())
+            .then((res) => appenddata(res));
+     
+            
+          }
+        });
+      });
+  }
+
+  function appenddata(data) {
+    golbaldata = [...data];
+    var tbody = document.getElementById("tbody");
+    tbody.innerHTML = "";
+    data.map((e) => {
+      tbody.innerHTML += `
+    
+    <tr>
+              <td>${e.id}</td>
+              <td>${e.country}</td>
+              <td>${e.city}</td>
+              <td>${e.population}</td>
+              <td>Edit </td>
+              <td onclick={deletdata(${e.id})}>Delete</td>
+            </tr>
+    
+    `;
+    });
+  }
+
+function deletdata(id)
+{
+  fetch(api+`/${id}`,{
+    "method":"DELETE",
+
+  }).then((res)=>getdata())
+}
+
+
+
+
+
+
+
+
+
+
+  function sortpopulation() {
+    var so = document.getElementById("sort").value;
+    // console.log(so,golbaldata);
+
+    if (so == "asc") {
+      golbaldata.sort((a, b) => b.population - a.population);
+      appenddata(golbaldata);
+    } else if ((so = "desc")) {
+      golbaldata.sort((a, b) => a.population - b.population);
+      appenddata(golbaldata);
+    } else {
+      appenddata(golbaldata);
+    }
+  }
+</script>
