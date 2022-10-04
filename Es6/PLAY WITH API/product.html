@@ -9,41 +9,55 @@
   </head>
   <body>
     <div class="navbar">
-     <div> <a href="./index.html">home</a>
-      <a href="./addproduct.html">addproducts</a>
-      <a href="./product.html">products</a></div>
+      <div>
+        <a href="./index.html">home</a>
+        <a href="./addproduct.html">addproducts</a>
+        <a href="./product.html">products</a>
+      </div>
     </div>
+    <div>
+      <select value="" onclick="sort()" id="sortvalue">
+        <option value=""> Sort By</option>
+        <option value="desc">
+          High to low
+        </option>
+        <option value="asc">
+          low to high
+        </option>
+      </select>
+    </div>
+
     <div id="container"></div>
   </body>
 </html>
 <script>
   let url = "https://skk-first-mock.herokuapp.com/products";
 
-    //  fetch(url)
-    // .then((res) => res.json())
-    // .then((data) => console.log(data));
-  
-async function getdata() {
-  try {
-    let res = await fetch(url);
-    let data = await res.json();
+  //  fetch(url)
+  // .then((res) => res.json())
+  // .then((data) => console.log(data));
 
-    console.log("api", data);
+  async function getdata() {
+    try {
+      let res = await fetch(url);
+      let data = await res.json();
 
-    appenddata(data);
-  } catch (error) {
-    console.log("error", error);
+      console.log("api", data);
+
+      appenddata(data);
+    } catch (error) {
+      console.log("error", error);
+    }
   }
-}
-getdata()
+  getdata();
 
-// Get data form api
+  // Get data form api
 
   function appenddata(data) {
-    console.log("map", data);
+    // console.log("map", data);
     data.map(function (elem, inde) {
       var div = document.createElement("div");
-
+      console.log(elem.id);
       var img = document.createElement("img");
       img.src = elem.image;
       var txt = document.createElement("p");
@@ -61,11 +75,21 @@ getdata()
     });
   }
 
+  //sort functionallity through api by
+  // GET /posts?_sort=views&_order=asc
 
-  //sort functionallity through api 
+  async function sort() {
+    // var sp = "desc";
+    var sp=document.getElementById("sortvalue").value
+
+    let res = await fetch(
+      `https://skk-first-mock.herokuapp.com/products?_sort=price&_order=${sp}`
+    );
+
+    let newdata = await res.json();
+    // console.log ("sort",data);
+    document.getElementById("container").innerHTML = null;
+    appenddata(newdata);
+  }
   
-
-
-
-
 </script>

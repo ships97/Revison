@@ -16,6 +16,11 @@
         margin-top: 80px;
         width: 100%;
       }
+      #edit-section{
+        display: none;
+        margin-top: 50px;
+
+      }
     </style>
   </head>
   <body>
@@ -63,6 +68,8 @@
           <tbody id="tbody"></tbody>
         </table>
       </div>
+
+      <div id="edit-section"></div>
     </div>
   </body>
 </html>
@@ -137,7 +144,7 @@
               <td>${e.country}</td>
               <td>${e.city}</td>
               <td>${e.population}</td>
-              <td>Edit </td>
+              <td onclick={editdata(${e.id})}>Edit </td>
               <td onclick={deletdata(${e.id})}>Delete</td>
             </tr>
     
@@ -145,6 +152,17 @@
     });
   }
 
+
+ function editdata(id)
+ {
+  console.log(id)
+    fetch(api+`/${id}`).then((res)=>res.json()).then((res)=>{
+
+
+      let editd=document.getElementById("edit-section")
+      // console.log(res)
+    })
+ }
 function deletdata(id)
 {
   fetch(api+`/${id}`,{
