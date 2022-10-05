@@ -33,9 +33,13 @@ export const Todo = () => {
         </form>
       </div>
 
-      {data?.map((a) => {
-        <p>{a}</p>;
-      })}
+      <table>
+        <tr>
+          <th>Todo </th>
+          <th>x</th>
+        </tr>
+       
+      </table>
     </div>
   );
 };
