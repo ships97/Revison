@@ -1,10 +1,10 @@
 import React from "react";
 
 export const Fetch = () => {
-  const url = "https://fakestoreapi.com/products";
+  const url = "http://localhost:8080/info";
 
   let obj = {
-    name: "sachin",
+    name: "rahul",
     roll: "175",
   };
 
@@ -12,20 +12,25 @@ export const Fetch = () => {
     fetch(url, {
       method: "POST",
       headers: {
-        
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      headers: "application/JSON",
       body: JSON.stringify(obj),
     })
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
   };
 
+  const getdata = async () => {
+    let res = await fetch(url);
+    let data = await res.json();
+    console.log(data);
+  };
+
   return (
     <div>
       Fetch
       <button onClick={post}>Click me to Post Data</button>
+      <button onClick={getdata}> click me to get data</button>
     </div>
   );
 };
