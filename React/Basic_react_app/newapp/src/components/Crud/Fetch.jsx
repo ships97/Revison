@@ -12,9 +12,10 @@ export const Fetch = () => {
     fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        
+        'Content-Type': 'application/json'
       },
-
+      headers: "application/JSON",
       body: JSON.stringify(obj),
     })
       .then((data) => console.log(data))

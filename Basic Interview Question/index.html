@@ -1,0 +1,93 @@
++<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+  
+
+    <form action="" id="data">
+        <input type="text" placeholder="enter the name" id="name">
+        <input type="email" placeholder="enter the Email" id="email">
+        <input type="number" placeholder="enter the contact no" id="mobile">
+        <input type="submit">
+    </form>
+
+
+    <div>
+
+    </div>
+  </body>
+</html>
+<script>
+
+
+document.getElementById("data").addEventListener("submit",abc)
+
+
+function abc(e)
+{ e.preventDefault();
+
+    var name=document.getElementById("name").value;
+    var email=document.getElementById("email").value
+    var phone=document.getElementById("mobile").value
+
+  console.log(name,email,phone)
+
+}
+
+  //   var count = 0;
+  //   let obj = {
+  //     name: "skk",
+
+  //     test: function () {
+  //       console.log("normalfunction:", this.count);
+  //     },
+  //     test2: () => {
+  //       console.log("arrow function:", this.count);
+  //     },
+  //   };
+
+  //   obj.test();
+  //   obj.test2();
+
+  // var a=10;
+  // var b=5;
+
+  //   var obj = {
+  //     num1: 5,
+  //     num2: 10,
+  //     add: function () {
+  //           console.log(this)
+  //     },
+  //     arrow:()=>{
+  //         console.log(this)
+  //     }
+  //   };
+
+  //   obj.add()
+
+  //   obj.arrow()
+  //
+
+  // let & const is block scope;
+
+  // var is functional scope;
+
+  // abc()
+  // function abc()
+  // {
+
+  //     if(true)
+  //     {
+  //         const a=5;
+  //     }
+  //     console.log(a)
+
+  // }
+
+  // hositing
+</script>

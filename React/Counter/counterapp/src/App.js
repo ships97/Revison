@@ -1,17 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import { Counter } from './components/Counter';
+import logo from "./logo.svg";
+import "./App.css";
+import { Counter } from "./components/Counter";
+import { MainRoutes } from "./components/Auth/MainRoutes";
+import { Home } from "./components/Auth/Home";
 
 function App() {
-
-
-
   return (
     <div className="App">
-    
-  <Counter/>
+      {/* <Counter/> */}
 
-
+      {/* <MainRoutes /> */}
+      <Home/>
     </div>
   );
 }
