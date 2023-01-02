@@ -1,7 +1,3 @@
-
-
-
-
 Prototype: Every Object  in javaScript has a built in property 
            which is called its Prototype.
 
