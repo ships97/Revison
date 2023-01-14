@@ -1,8 +1,8 @@
 var arr=[]
-for(var i=0; i<=202; i++)
-{ let flag=true;
+for(var i=0; i<=102; i++)
+{   let flag=true;
     let s="";
-    s=s+i;
+     s=s+i;
     for(let j=0; j<s.length; j++)
     {
         if(s[j]!==s[s.length-1-j])
