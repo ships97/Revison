@@ -180,7 +180,6 @@ As the name suggests synchronous means to be in a sequence,
  i.e. every statement of the code gets executed one by one. So,
  basically a statement has to wait for the earlier statement to get executed.
 Let us understand this with the help of an example.
-
 Asynchronous JavaScript: 
 Asynchronous code allows the program to be executed
 immediately where the synchronous code will block 
