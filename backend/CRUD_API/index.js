@@ -40,7 +40,6 @@ app.patch("/:id", async (req, res) => {
 
 
 
-
 app.get("/:asc",async(req,res)=>{
 
 const data=await needusermodel.find().sort({"money":1})
