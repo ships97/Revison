@@ -1,23 +1,18 @@
 // let arr=[1,4,5,5,6,6,8,9,6,3,3,3,3,3,3];
-let arr="juggnuh"
+let arr = "juggnuh";
 
-let obj={}
+let obj = {};
 
-for(var i=0; i<arr.length; i++)
-{
-  if(obj[arr[i]]==undefined)
-  {
-      obj[arr[i]]=1;
+for (var i = 0; i < arr.length; i++) {
+  if (obj[arr[i]] == undefined) {
+    obj[arr[i]] = 1;
   }
-  obj[arr[i]]=obj[arr[i]]+1;
+  obj[arr[i]] = obj[arr[i]] + 1;
 }
 console.log(obj);
 
-
-for(key in obj)
-{
-  if(obj[key]<=2)
-  {
-    console.log(key)
+for (key in obj) {
+  if (obj[key] <= 2) {
+    console.log(key);
   }
 }
