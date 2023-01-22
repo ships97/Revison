@@ -41,13 +41,15 @@ export const LiveTodo = () => {
     getdata();
   }, []);
 
-
-  const Del=(id)=>{
+  const Del = (id) => {
     axios
-    .delete(`http://localhost:8000/info/${id}`)
-    .then((res) =>{console.log(res); getdata()})
-    .catch((err) => console.log(err));
-  }
+      .delete(`http://localhost:8000/info/${id}`)
+      .then((res) => {
+        console.log(res);
+        getdata();
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
       {/* <h1>{text}</h1> */}
@@ -59,9 +61,12 @@ export const LiveTodo = () => {
       <button onClick={posting}>Click here</button>
 
       {data.map((e, index) => {
-        return <div key={index}>{e.text}
-          <button onClick={()=>Del(e.id)}>delete</button>
-        </div>;
+        return (
+          <div key={index}>
+            {e.text}
+            <button onClick={() => Del(e.id)}>delete</button>
+          </div>
+        );
       })}
     </div>
   );
